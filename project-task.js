@@ -47,28 +47,31 @@ but it contains multiple syntax errors that prevent it from being parsed.
 const invalidBookingJSON = `
 {
   "hotelName": "Grand City Hotel",
-  "checkInDate": "2024-05-15"
+  "checkInDate": "2024-05-15",
   "checkOutDate": "2024-05-20",
   "guests": [
     {
-      name: "Alice Johnson",
+      "name": "Alice Johnson",
       "age": 30,
       "email": "alice.johnson@example.com"
     },
     {
       "name": "Bob Smith",
-      "age": undefined,
+      "age": null,
       "email": "bob.smith@example"
     }
   ],
   "roomDetails": {
     "type": "Suite",
     "pricePerNight": 200,
-    "amenities": ["WiFi", "Breakfast", "Parking",]
+    "amenities": ["WiFi", "Breakfast", "Parking"]
   }
 }
 `;
-
+// checkInDate was missing comma( , ).Creates syntax error
+// need quotes around name (for Alice Johnson).
+// age should be null, not undefined. 
+// There was a comma after Parking. Don't need a comma after final item in JSON array
 
 // ============================================
 // ✅ Requirements
@@ -91,11 +94,12 @@ const invalidBookingJSON = `
 💬 Reflect and answer the following:
 
 1️⃣ What tools or techniques did you use to identify the errors?
-
+I reviewed previous material (section 5) and found most common errors. Used it to locate/fix errors.
 2️⃣ How did you confirm that your corrected JSON file was valid?
-
+I used jsonlint.com to verify everything.
 3️⃣ Which errors were the most difficult to spot? Why?
-
+The comma after Parking. Its an easy one to miss, especially after you've already found a few.
 4️⃣ What strategies can help you avoid these kinds of errors in the future?
    (e.g., syntax highlighting, linters, writing JSON by example)
+   Pay attention to your quotes and commas. Those are the biggest. And make sure to never use undefined for anything. 
 */
